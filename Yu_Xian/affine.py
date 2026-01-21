@@ -56,7 +56,7 @@ def py_worst_outlier(gcps_lst, E, N, dfTolerance):
     else:
         return worst_index
 
-def py_rm_outliers(gcps_lst, dfTolerance, nGCPmin = 3):
+def py_rm_outliers(gcps_lst, dfTolerance, nGCPmin = -1):
 
     gcps_lst_cp = list(gcps_lst)
     E12, N12, E21, N21 = solve_lss_from_gcps(gcps_lst_cp)
@@ -71,14 +71,17 @@ def py_rm_outliers(gcps_lst, dfTolerance, nGCPmin = 3):
 
     return gcps_lst_cp, E12, N12, E21, N21
 
-def py_GCPTransformer(gcps_lst, bRefine, dfTolerance, nGCPmin = 3):
+def py_GCPTransformer(gcps_lst, bRefine, dfTolerance, nGCPmin = -1):
 
     if (bRefine == True):
-        if nGCPmin < 4:
-            return "Need 4 or more GCPs for bRefine to be True"
+        if nGCPmin == -1:
+            nGCPmin = 4
+            if len(gcps_lst) < nGCPmin:
+                return "Need 4 or more GCPs for bRefine to be True"
         else:
-            gcps_lst_cp, E12, N12, E21, N21 = py_rm_outliers(gcps_lst, dfTolerance, nGCPmin)
-            return gcps_lst_cp, E12, N12, E21, N21
+            if nGCPmin != -1: 
+                gcps_lst_cp, E12, N12, E21, N21 = py_rm_outliers(gcps_lst, dfTolerance, nGCPmin)
+                return gcps_lst_cp, E12, N12, E21, N21
     else:
         E12, N12, E21, N21 = solve_lss_from_gcps(gcps_lst)
         return gcps_lst, E12, N12, E21, N21

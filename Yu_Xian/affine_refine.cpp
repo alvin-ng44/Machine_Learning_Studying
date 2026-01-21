@@ -44,15 +44,15 @@ int main()
     int nReqOrder   = 1;      // affine
     int bReversed   = FALSE;  // pixel/line -> geo
     double tolerance = 40.0;   // 0 = GDAL default (no pruning)
-    int minGcps     = 3;
+    int minGcps     = 4;
 
-    void* hTransform = GDALCreateGCPTransformer(
+    void* hTransform = GDALCreateGCPRefineTransformer(
         nGCPs,
         gcps,
         nReqOrder,
-        bReversed
-        // tolerance,
-        // minGcps
+        bReversed,
+        tolerance,
+        minGcps
     );
 
     if (hTransform == nullptr)
