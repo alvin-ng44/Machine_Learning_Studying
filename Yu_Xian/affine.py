@@ -1,4 +1,5 @@
 import numpy as np
+from osgeo import gdal, osr
 
 # GCP is of the form (X_geo, Y_geo, 0, X_pixel, Y_pixel)
 
@@ -85,3 +86,21 @@ def py_GCPTransformer(gcps_lst, bRefine, dfTolerance, nGCPmin = -1):
     else:
         E12, N12, E21, N21 = solve_lss_from_gcps(gcps_lst)
         return gcps_lst, E12, N12, E21, N21
+
+# def py_warp_destoutput(tif_file, py_GCPTransformer):
+
+#     src_ds = gdal.Open(tif_file)
+#     width, height = src_ds.RasterXSize, src_ds.RasterYSize
+
+#     N_pixelstep = 50
+#     nsteps = int( (min(width, height) / N_pixelstep) + 0.5)
+#     if nsteps < 20:
+#         nsteps = 20
+#     elif nsteps > 100:
+#         nsteps = 100
+
+#     success_flag = None
+
+#     while nsteps:
+        
+        
