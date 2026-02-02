@@ -16,26 +16,26 @@ int main()
 
     gcps[0].dfGCPPixel = 622.2811890466377;
     gcps[0].dfGCPLine  = 102.49433703793743;
-    gcps[0].dfGCPX     = 147.93952308870604;
-    gcps[0].dfGCPY     = 2.327283624665725;
+    gcps[0].dfGCPX     = 149.1094311969085;
+    gcps[0].dfGCPY     = 17.564646767351825;
     gcps[0].dfGCPZ     = 0.0;
 
     gcps[1].dfGCPPixel = 137.6266560291843;
     gcps[1].dfGCPLine  = 540.2528119295063;
-    gcps[1].dfGCPX     = -111.3216218784706;
-    gcps[1].dfGCPY     = 24.891853741700032;
+    gcps[1].dfGCPX     = 141.90773272559804;
+    gcps[1].dfGCPY     = 18.19144038171389;
     gcps[1].dfGCPZ     = 0.0;
 
     gcps[2].dfGCPPixel = 570.1446619661385;
     gcps[2].dfGCPLine  = 84.92714352482984;
-    gcps[2].dfGCPX     = 20.6639647327448;
-    gcps[2].dfGCPY     = -3.1556200738362463;
+    gcps[2].dfGCPX     = 145.57399902035402;
+    gcps[2].dfGCPY     = 17.41234388683788;
     gcps[2].dfGCPZ     = 0.0;
 
     gcps[3].dfGCPPixel = 599.5177271454444;
     gcps[3].dfGCPLine  = 366.1259940916348;
-    gcps[3].dfGCPX     = 40.34292524539279;
-    gcps[3].dfGCPY     = -38.01492663503724;
+    gcps[3].dfGCPX     = 146.12063681237203;
+    gcps[3].dfGCPY     = 16.444029815693412;
     gcps[3].dfGCPZ     = 0.0;
 
     // -----------------------------
@@ -43,7 +43,7 @@ int main()
     // -----------------------------
     int nReqOrder   = 1;      // affine
     int bReversed   = FALSE;  // pixel/line -> geo
-    double tolerance = 40.0;   // 0 = GDAL default (no pruning)
+    double tolerance = 0;   // 0 = GDAL default (no pruning)
     int minGcps     = 3;
 
     void* hTransform = GDALCreateGCPTransformer(
